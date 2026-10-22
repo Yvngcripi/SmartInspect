@@ -1,0 +1,16 @@
+{
+  "short_name": "El Trébol",
+  "name": "Asesorías El Trébol - Inspecciones",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#121824",
+  "background_color": "#121824",
+  "orientation": "portrait"
+}
