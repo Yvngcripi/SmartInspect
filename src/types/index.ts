@@ -1,35 +1,59 @@
+export type UserRole = 'inspector' | 'supervisor';
+
+export interface User {
+  id: string;
+  nombre: string;
+  email: string;
+  rol: UserRole;
+  cargo: string;
+}
+
 export interface Dano {
   id: string;
   descripcion: string;
-  fotos: string[]; // Empty in pre_inspeccion, populated in inspeccion
-  ubicacion?: string; // e.g. 'Cielo', 'Muro', 'Piso', 'Ventana/Puerta', 'Exterior'
+  gravedad: 'leve' | 'moderada' | 'grave';
+  fotos: string[]; // URIs o base64
 }
 
 export interface Dependencia {
   id: string;
-  nombre: string;
-  largo: number; // in cm
-  ancho: number; // in cm
-  alto: number;  // in cm
+  nombre: string; // ej: "Living-Comedor", "Dormitorio Principal", "Baño", "Cocina", "Fachada Norte"
+  largo: number;
+  ancho: number;
+  alto: number;
+  esFachadaOCierre?: boolean;
+  fotosGenerales: string[];
   danos: Dano[];
-  fotosGenerales: string[]; // General reference photos
 }
 
-export type EstadoInspeccion = 'borrador' | 'finalizada';
-export type TipoInspeccion = 'inspeccion' | 'pre_inspeccion';
+export type EstadoInspeccion = 'borrador' | 'en_revision' | 'aprobada' | 'rechazada';
 
 export interface Inspeccion {
   id: string;
-  tipo: TipoInspeccion; // 'inspeccion' (required photos) or 'pre_inspeccion' (damage text only)
-  siniestro: string; // Event type: 'Sismo', 'Rotura de cañería', 'Inundación', 'Filtración de aguas lluvias'
-  banco: string; // Bank where the mortgage credit is held
-  nombreCliente: string; // Client's full name
-  rut: string; // National ID card (RUT)
-  direccion: string; // Complete property address
-  correo: string; // Client's email address
-  fecha: string; // YYYY-MM-DD
-  folioNumber?: number;
+  folioNumber: number;
+  tipo: 'pre_inspeccion' | 'inspeccion_seguro';
+  siniestro: string;
+  banco: string;
+  nombreCliente: string;
+  rut: string;
+  direccion: string;
+  correo: string;
+  fecha: string;
   estado: EstadoInspeccion;
+  inspectorId: string;
+  inspectorNombre: string;
+  observacionesSupervisor?: string;
+  fechaAprobacion?: string;
   dependencias: Dependencia[];
   metrosCuadradosTotales: number;
+}
+
+export interface DashboardStats {
+  totalInspecciones: number;
+  borradores: number;
+  enRevision: number;
+  aprobadas: number;
+  rechazadas: number;
+  totalM2: number;
+  siniestrosPorBanco: { banco: string; count: number }[];
 }

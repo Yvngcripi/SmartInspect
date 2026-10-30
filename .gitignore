@@ -40,3 +40,7 @@ android/local.properties
 
 # TypeScript
 *.tsbuildinfo
+
+# Expo & Local Backups
+.expo/
+_legacy_capacitor_backup/

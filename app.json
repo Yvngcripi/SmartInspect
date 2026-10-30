@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "SmartInspect",
+    "slug": "smartinspect",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#064e3b"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#064e3b"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3632e29f-3b9e-4c12-802f-f976625636c1"
+      }
+    },
+    "owner": "yvngflames-team"
+  }
+}
